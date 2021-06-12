@@ -1,6 +1,7 @@
 import time as time
 import math as math
 import random
+import emoji
 
 print("Hello, welcome to the ultimate super fun game!")
 time.sleep(0.7)
@@ -38,6 +39,27 @@ print("SPECIAL DEFENSE: ", user_spdef)
 print("SPEED: ", user_spd)
 print("-----------------------------")
 
+reroll = input("Do you want to reroll your stats? [Y/N] ")
+while reroll == "Y" or reroll == "y":
+  time.sleep(0.5)
+  print("-----------------------------")
+  user_hp = random.randint(150, 250)
+  user_atk = random.randint(50, 150)
+  user_spatk = random.randint(50, 250-user_atk)
+  user_def = random.randint(50, 150)
+  user_spdef = random.randint(50, 250-user_def)
+  user_spd = random.randint(50, 325 - user_hp)
+
+  print(name + "'s stats are: ")
+  print("HEALTH: ", user_hp)
+  print("ATTACK: ", user_atk)
+  print("SPECIAL ATTACK: ", user_spatk)
+  print("DEFENSE: ", user_def)
+  print("SPECIAL DEFENSE: ", user_spdef)
+  print("SPEED: ", user_spd)
+  print("-----------------------------")
+  reroll = input("Do you want to reroll your stats? [Y/N] ")
+
 time.sleep(0.7)
 op = input("Which difficulty would you like? You can choose Easy, Normal, or Hard. [E/N/H] ")
 
@@ -59,14 +81,14 @@ elif op == 'N' or op == 'n':
   op_spatk = random.randint(130, 355 - op_atk)
   op_def = random.randint(130, 225)
   op_spdef = random.randint(130, 355 - op_def)
-  op_spd = random.randint(130, 330 - (op_hp /2))
+  op_spd = random.randint(120, 275 - math.ceil(op_hp /2))
 elif op == 'H' or op == 'h':
   op_hp = random.randint(260, 335)
   op_atk = random.randint(160, 255)
   op_spatk = random.randint(160, 415 - op_atk)
   op_def = random.randint(160, 255)
   op_spdef = random.randint(160, 415 - op_def)
-  op_spd = random.randint(160, 360 - (op_hp /2))
+  op_spd = random.randint(140, 310 - math.ceil(op_hp /2))
 
 if op == 'E' or op == 'e':
   pt_remaining = 200  
@@ -307,7 +329,7 @@ if user_spd > op_spd:
     user_hp = user_hp - op_damage
     time.sleep(0.3)
     if power > 1.2 and miss <= 90:
-      print("Critical Damage!!!")
+      print(emoji.emojize(":star:  Critical Damage!!! :star:"))
     if miss > 90:
       print("Your attack missed!")
     print("You have dealt",str(user_damage), "damage!")
@@ -321,7 +343,7 @@ if user_spd > op_spd:
       print("Congrats " + name + "! You won the game!")
       exit()
     if power2 > 1.2 and miss2 <= 90:
-      print("Critical Damage!!!")
+      print(emoji.emojize(":star:  Critical Damage!!! :star:"))
     if miss2 > 90:
       print(opponent + "'s attack missed!")
     print(opponent + " has dealt",str(op_damage), "damage!")
@@ -375,7 +397,7 @@ else:
     op_hp = op_hp - user_damage
     time.sleep(0.3)
     if power2 > 1.2 and miss2 <= 90:
-      print("Critical Damage!!!")
+      print(emoji.emojize(":star:  Critical Damage!!! :star:"))
     if miss2 > 90:
       print(opponent + "'s attack missed!")
     print(opponent + " has dealt",str(op_damage), "damage!")
@@ -390,7 +412,7 @@ else:
     print(" ")
     time.sleep(0.3)
     if power > 1.2 and miss <= 90:
-      print("Critical Damage!!!")
+      print(emoji.emojize(":star:  Critical Damage!!! :star:"))
     if miss > 90:
       print("Your attack missed!")
     print("You have dealt",str(user_damage), "damage!")
@@ -400,9 +422,6 @@ else:
     print(opponent + "'s health is now", op_hp, ".")
     time.sleep(0.5)
     print("-----------------------------")
-
-
-
 
 if user_hp > op_hp:
   print("Congrats " + name + "! You won the game!")
