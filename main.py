@@ -38,6 +38,9 @@ print("SPECIAL DEFENSE: ", user_spdef)
 print("SPEED: ", user_spd)
 print("-----------------------------")
 
+
+
+
 pt_remaining = 200
 print("You can put up to 100 points for each stat")
 print("You have " + str(pt_remaining) + " points left.")
