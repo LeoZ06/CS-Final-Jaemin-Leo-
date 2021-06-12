@@ -38,10 +38,43 @@ print("SPECIAL DEFENSE: ", user_spdef)
 print("SPEED: ", user_spd)
 print("-----------------------------")
 
+time.sleep(0.7)
+op = input("Which difficulty would you like? You can choose Easy, Normal, or Hard. [E/N/H] ")
 
+while op != "E" and op != "e" and op != "N" and op != "n" and op != "H" and op != "h":
+  print("That's not a valid difficulty setting!")
+  time.sleep(0.3)
+  op = input("Which difficulty would you like? You can choose Easy, Normal, or Hard. [E/N/H] ")
 
+if op == 'E' or op == 'e':
+  op_hp = random.randint(200, 275)
+  op_atk = random.randint(100, 195)
+  op_spatk = random.randint(100, 295 - op_atk)
+  op_def = random.randint(100, 175)
+  op_spdef = random.randint(100, 275 - op_def)
+  op_spd = random.randint(100, 350 - op_hp)
+elif op == 'N' or op == 'n':
+  op_hp = random.randint(230, 305)
+  op_atk = random.randint(130, 225)
+  op_spatk = random.randint(130, 355 - op_atk)
+  op_def = random.randint(130, 225)
+  op_spdef = random.randint(130, 355 - op_def)
+  op_spd = random.randint(130, 330 - (op_hp /2))
+elif op == 'H' or op == 'h':
+  op_hp = random.randint(260, 335)
+  op_atk = random.randint(160, 255)
+  op_spatk = random.randint(160, 415 - op_atk)
+  op_def = random.randint(160, 255)
+  op_spdef = random.randint(160, 415 - op_def)
+  op_spd = random.randint(160, 360 - (op_hp /2))
 
-pt_remaining = 200
+if op == 'E' or op == 'e':
+  pt_remaining = 200  
+elif op == 'N' or op == 'n':
+  pt_remaining = 235
+elif op == 'H' or op == 'h':
+  pt_remaining = 300
+
 print("You can put up to 100 points for each stat")
 print("You have " + str(pt_remaining) + " points left.")
 time.sleep(1)
@@ -224,37 +257,6 @@ print("DEFENSE: ", user_def)
 print("SPECIAL DEFENSE: ", user_spdef)
 print("SPEED: ", user_spd)
 
-time.sleep(0.7)
-op = input("Which difficulty would you like? You can choose Easy, Normal, or Hard. [E/N/H] ")
-
-while op != "E" and op != "e" and op != "N" and op != "n" and op != "H" and op != "h":
-  print("That's not a valid difficulty setting!")
-  time.sleep(0.3)
-  op = input("Which difficulty would you like? You can choose Easy, Normal, or Hard. [E/N/H] ")
-
-if op == 'E' or op == 'e':
-  op_hp = random.randint(200, 275)
-  op_atk = random.randint(100, 195)
-  op_spatk = random.randint(100, 295 - op_atk)
-  op_def = random.randint(100, 175)
-  op_spdef = random.randint(100, 275 - op_def)
-  op_spd = random.randint(100, 350 - op_hp)
-elif op == 'N' or op == 'n':
-  op_hp = random.randint(230, 305)
-  op_atk = random.randint(130, 225)
-  op_spatk = random.randint(130, 355 - op_atk)
-  op_def = random.randint(130, 225)
-  op_spdef = random.randint(130, 355 - op_def)
-  op_spd = random.randint(130, 330 - (op_hp /2))
-elif op == 'H' or op == 'h':
-  op_hp = random.randint(260, 335)
-  op_atk = random.randint(160, 255)
-  op_spatk = random.randint(160, 415 - op_atk)
-  op_def = random.randint(160, 255)
-  op_spdef = random.randint(160, 415 - op_def)
-  op_spd = random.randint(160, 360 - (op_hp /2))
-
-
 print("-----------------------------")
 print(opponent + "'s stats are: ")
 print("HEALTH: ", op_hp)
@@ -270,7 +272,7 @@ print("A means an (A)ttack move while S means a (S)pecial Attack move")
 if user_spd > op_spd:
   while user_hp > 0 and op_hp > 0:
     crt = random.randint(1, 100)
-    if crt > 78:
+    if crt > 75:
       power = 1.5
     elif crt < 22:
       power = 0.5
@@ -282,7 +284,7 @@ if user_spd > op_spd:
     else: 
       user_damage = math.floor((((((20) * 75 *user_spatk) / (50 * op_spdef)) +2) * power ) * random.uniform(0.85, 1.15))
     crt2 = random.randint(1, 100)
-    if crt2 > 72:
+    if crt2 > 75:
       power2 = 1.5
     elif crt2 < 22:
       power2 = 0.5
@@ -340,7 +342,7 @@ if user_spd > op_spd:
 else:
   while user_hp > 0 and op_hp > 0:
     crt = random.randint(1, 100)
-    if crt > 78:
+    if crt > 75:
       power = 1.5
     elif crt < 22:
       power = 0.5
@@ -352,7 +354,7 @@ else:
     else: 
       user_damage = math.floor((((((20) * 75 *user_spatk) / (50 * op_spdef)) +2) * power ) * random.uniform(0.85, 1.15))
     crt2 = random.randint(1, 100)
-    if crt2 > 72:
+    if crt2 > 75:
       power2 = 1.5
     elif crt2 < 22:
       power2 = 0.5
